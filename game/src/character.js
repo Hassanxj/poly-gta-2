@@ -10,7 +10,8 @@
 // `angle` rotates them to face any direction.
 //
 // PLAYER — "Milo" look, the one the user will play:
-//   skin #f5cd9a, black spiky pixel hair, blue jacket #2f6fd0,
+//   skin #f5cd9a, black spiky pixel hair, blue jacket #2f6fd0 with a
+//   white pixel belt buckle and a pale pixel collar,
 //   dark jeans #2e3a52, white shoes. Two dark pixel eyes and a
 //   blocky pixel smile on the facing side, high contrast.
 // PEDESTRIANS — same voxel body, varied shirts / hair / skin.
@@ -79,12 +80,17 @@ export function drawPerson(ctx, x, y, angle, look, phase = 0, walking = false) {
 
   // Torso / jacket: one wide voxel block.
   voxel(ctx, -12, -16, 24, 24, look.shirt);
-  // Jacket detail: dark pixel zip down the middle, belt at the waist,
-  // and a light collar notch at the top.
+  // Jacket detail: dark pixel zip down the middle, a belt at the waist
+  // with a bright white pixel buckle, and a pixel collar at the top —
+  // two pale collar flaps under the chin, edged in dark blue.
   px(ctx, -1, -13, 2, 19, 'rgba(0,0,0,0.35)');
   px(ctx, -12, 5, 24, 3, 'rgba(0,0,0,0.35)');
-  px(ctx, -6, -16, 4, 4, '#e8e8e8');
-  px(ctx, 2, -16, 4, 4, '#e8e8e8');
+  px(ctx, -4, 4, 8, 5, '#141414'); // belt buckle outline
+  px(ctx, -3, 5, 6, 3, '#ffffff'); // white pixel belt buckle
+  px(ctx, -10, -16, 8, 5, '#1f4d8f'); // pixel collar, left flap edge
+  px(ctx, -9, -16, 6, 4, '#dbeafe'); // pixel collar, left flap
+  px(ctx, 2, -16, 8, 5, '#1f4d8f'); // pixel collar, right flap edge
+  px(ctx, 3, -16, 6, 4, '#dbeafe'); // pixel collar, right flap
 
   // Head: a voxel block — skin front, lighter top face, darker side.
   voxel(ctx, -9, -36, 18, 16, look.skin);
